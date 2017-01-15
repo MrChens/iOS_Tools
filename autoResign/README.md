@@ -25,14 +25,14 @@
 将`application-identifier`中的`xxx.xxx.xxx.xxx`改为`yourTeamID.com.xxx.xxx`
 
 # 文件结构:
-autoResign/
-├── README.md
-├── autoResign.sh
-├── input
-├── output
-└── resign
-    ├── xx.mobileprovision
-    ├── Entitlements.plist
-    ├── Payload
-    ├── resign.config
-    └── resign.sh
+    autoResign/
+    ├── README.md
+    ├── autoResign.sh
+    ├── input
+    ├── output
+    └── resign
+        ├── xx.mobileprovision
+        ├── Entitlements.plist
+        ├── Payload
+        ├── resign.config
+        └── resign.sh
