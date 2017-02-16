@@ -1,0 +1,9 @@
+{
+	Filter = {
+		Bundles = (
+			"com.PandaTV.Live-iPhone",
+			"com.chinanetcenter.UOne",
+			"com.ucweb.iphone.lowversion",
+		);
+	};
+}
