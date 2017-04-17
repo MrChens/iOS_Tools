@@ -1,5 +1,6 @@
 # 本工具用于混淆方法名和类名   
 > 使用本脚本做完了混淆后，可以使用svn上的`tools/class_dump`中的工具做.h文件的dump查看混淆的效果.
+
 >建议:理论上来说能混淆任意的字符串，但是出于实用性`obfuscation.list`最好不要放置属性名，我只测试过函数名和类名的混淆，如果有兴趣对其他的字符串做混淆请自行测试。
 
 该工具是由[念茜的iOS安全攻防（二十三）：Objective-C代码混淆](http://blog.csdn.net/yiyaaixuexi/article/details/29201699)为原型做了以下的修改
