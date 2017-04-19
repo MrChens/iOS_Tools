@@ -30,5 +30,7 @@
             #import "codeObfuscation.h"  
         #endif  
 
+### 在使用过程中如果有任何问题或者改良的方案欢迎提issue和pr.
+
 [BuildPhase]:http://mrchens.github.io/images/article/2017.04/2017-04-17-iOS-Tools-BuildPhase.png
 [class_dump]:https://github.com/MrChens/iOS_Tools/tree/master/class_dump
