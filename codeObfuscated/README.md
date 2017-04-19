@@ -11,7 +11,7 @@
 
 ### 使用步骤:
 - 将混淆脚本`obfuscated.sh`和需要混淆的函数名/类名表`obfuscation.list`这2个文件放到工程的根目录下.
-- __重要的提示:如果是为了审核通过请不要将`obfuscation.list`在项目中引用(reference),否则就会和我一样虽然混淆了但是`obfuscation.list`暴露出了一起还是会被Apple拒绝的,因为你将文件引用入工程会导致它在打包时会将该文件一起打包进去的.__
+- __重要的提示:如果是为了审核通过请不要将`obfuscation.list`在项目中引用(reference),否则就会和我一样虽然混淆了但是`obfuscation.list`暴露出了一切还是会被Apple拒绝的,因为你将文件引用入工程会导致它在打包时会将该文件一起打包进去的.__
 - 配置`Build Phase`:在工程`Build Phase`中添加执行脚本操作，执行`obfuscated.sh`如图![BuildPhase][BuildPhase].
 - 在`obfuscation.list`中写入需要混淆的方法名和类名，如:   
         @interface JPCore : NSObject    //其中JPCore是需要混淆的类名
