@@ -4,7 +4,7 @@ TABLENAME=symbols
 SYMBOL_DB_FILE="symbols"
 STRING_SYMBOL_FILE="obfuscation.list"
 TIME=`date "+%Y%m%d%H_%M"`
-HEAD_FILE="$PROJECT_DIR/codeObfuscation.h"
+HEAD_FILE="codeObfuscation.h"
 export LC_CTYPE=C
 
 #维护数据库方便日后作排重
@@ -45,11 +45,12 @@ codeObfuscation() {
         touch $HEAD_FILE
         echo '#ifndef Demo_codeObfuscation_h
 #define Demo_codeObfuscation_h' >> $HEAD_FILE
-        echo "//confuse string at `date`" >> $HEAD_FILE
     else
         echo $TIME
         sed -i.$TIME.bak '/#endif/d' $HEAD_FILE
     fi
+
+    echo "//confuse string at `date`" >> $HEAD_FILE
 
     cat "$STRING_SYMBOL_FILE" | while read -ra line; do
         if grep -q " $line " "$HEAD_FILE"; then
@@ -71,4 +72,3 @@ codeObfuscation() {
 }
 
 codeObfuscation
-# randomString

@@ -54,3 +54,12 @@ JPProtocol
 JPSpecialInit
 JPCore
 JPLoader
+JPLoaderInclude
+JPLoaderTestInclude
+JPExtension
+JPPlayground
+JPDevErrorView
+JPDevMenu
+JPDevMenuItem
+JPDevTipView
+JPDevMenuDelegate
