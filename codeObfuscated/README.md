@@ -1,5 +1,6 @@
 # 本工具是用于混淆方法名和类名   
 > 改良这个脚本工具的初衷:因为项目中使用JSPatch的热修复功能，然后上架的时候被Apple拒绝了，然后就有了这个混淆的工具。如果你也需要混淆JSPatch那么你可以复用`obfuscation.list`,本人已经通过审核了.
+
 > 使用本脚本做完了混淆后，可以使用github上整理好的上的[class_dump][class_dump]中的工具做.h文件的dump查看混淆的效果.
 
 >建议:理论上来说能混淆任意的字符串，但是出于实用性`obfuscation.list`最好不要放置属性名，我只测试过函数名和类名的混淆，如果有兴趣对其他的字符串做混淆请自行测试。
@@ -9,7 +10,8 @@
 - 防止每次编译程序的时候,`codeObfuscation.h`文件都会发生变化而导致的每次编译都要很久的问题
 
 ### 使用步骤:
-- 将混淆脚本`obfuscated.sh`和需要混淆的函数名/类名表`obfuscation.list`放到工程目录下
+- 将混淆脚本`obfuscated.sh`和需要混淆的函数名/类名表`obfuscation.list`这2个文件放到工程的根目录下.
+- __重要的提示:如果是为了审核通过请不要将`obfuscation.list`在项目中引用(reference),否则就会和我一样虽然混淆了但是`obfuscation.list`暴露出了一起还是会被Apple拒绝的,因为你将文件引用入工程会导致它在打包时会将该文件一起打包进去的.__
 - 配置`Build Phase`:在工程`Build Phase`中添加执行脚本操作，执行`obfuscated.sh`如图![BuildPhase][BuildPhase].
 - 在`obfuscation.list`中写入需要混淆的方法名和类名，如:   
         @interface JPCore : NSObject    //其中JPCore是需要混淆的类名
@@ -27,7 +29,6 @@
             //添加混淆作用的头文件（这个文件名是脚本obfuscated.sh中定义的）  
             #import "codeObfuscation.h"  
         #endif  
-
 
 [BuildPhase]:http://mrchens.github.io/images/article/2017.04/2017-04-17-iOS-Tools-BuildPhase.png
 [class_dump]:https://github.com/MrChens/iOS_Tools/tree/master/class_dump
