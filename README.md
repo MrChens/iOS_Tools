@@ -5,6 +5,9 @@
 - `class_dump`对ipa文件进行头文件的导出[传送门][class_dump]
 - `codeObfuscated`改良版的代码混淆[传送门][codeObfuscated]
 
+
+### 在使用过程中如果有任何问题或者改良的方案欢迎提issue和pr.
+
 [jailbreaking]:https://github.com/MrChens/iOS_Tools/tree/master/inject_with_jailbreaking
 [class_dump]:https://github.com/MrChens/iOS_Tools/tree/master/class_dump
 [codeObfuscated]:https://github.com/MrChens/iOS_Tools/tree/master/codeObfuscated
