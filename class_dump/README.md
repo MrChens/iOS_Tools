@@ -24,3 +24,6 @@
   - 将xxx.ipa解压到`class-dump`同个目录下，然后使用下面的命令将头文件导出到`outputs`目录下:
   - `./class-dump -H xx.app -o  outputs`
   - 然后就能在`outputs`中看到导出的头文件
+
+
+### 在使用过程中如果有任何问题或者改良的方案欢迎提issue和pr.

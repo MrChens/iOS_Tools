@@ -36,3 +36,6 @@
         ├── Payload
         ├── resign.config
         └── resign.sh
+
+
+### 在使用过程中如果有任何问题或者改良的方案欢迎提issue和pr.
