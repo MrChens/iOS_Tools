@@ -47,16 +47,21 @@ codeObfuscation() {
 #define Demo_codeObfuscation_h' >> $HEAD_FILE
     else
         echo $TIME
-        sed -i.$TIME.bak '/#endif/d' $HEAD_FILE
+        sed -i.bak '/#endif/d' $HEAD_FILE
+        rm $HEAD_FILE.bak
     fi
 
-    echo "//confuse string at `date`" >> $HEAD_FILE
-
+    isNewDefine=0
     cat "$STRING_SYMBOL_FILE" | while read -ra line; do
         if grep -q " $line " "$HEAD_FILE"; then
             echo "already exist $line"
         else
             if [[ ! -z "$line" ]]; then
+                if [[ $isNewDefine == 0 ]]; then
+                    isNewDefine=1
+                    sed -i.$TIME.bak $HEAD_FILE
+                    echo "//confuse string at `date`" >> $HEAD_FILE
+                fi
             ramdom=`randomString`
             echo "***define $line $ramdom***"
             insertValue $line $ramdom
