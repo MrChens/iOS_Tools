@@ -52,7 +52,7 @@ JPKeyCommands
 SGDirWatchdog
 JPProtocol
 JPSpecialInit
-JPCore
+JPEngine
 JPLoader
 JPLoaderInclude
 JPLoaderTestInclude
