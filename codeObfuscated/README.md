@@ -23,6 +23,7 @@
         seg1    
         seg2
 - 脚本执行完了以后会生成一个`codeObfuscation.h`头文件，将此头文件加入`XXX-Prefix.ch`中
+
         #ifdef __OBJC__  
             #import <UIKit/UIKit.h>  
             #import <Foundation/Foundation.h>  
