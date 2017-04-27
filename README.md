@@ -10,6 +10,6 @@
 
 [jailbreaking]:https://github.com/MrChens/iOS_Tools/tree/master/inject_with_jailbreaking
 [class_dump]:https://github.com/MrChens/iOS_Tools/tree/master/class_dump
-[codeObfuscated]:https://github.com/MrChens/iOS_Tools/tree/master/codeObfuscated
+[codeObfuscated]:https://github.com/MrChens/codeObfuscated
 [autoResign]:https://github.com/MrChens/iOS_Tools/tree/master/autoResign
 [iOS_Tools]:https://github.com/MrChens/iOS_Tools
