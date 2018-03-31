@@ -51,9 +51,9 @@
 
 ### 在使用过程中如果有任何问题或者改良的方案欢迎提issue和pr.
 ![wechat_qrcode][wechat_qrcode]
-![wechat_reward][wechat_reward]
-![alipay_reward][alipay_reward]
+
+              "5毛一块赞助一下"
+
 <img src="https://mrchens.github.io/images/wechat_reward.JPG" width="120" height="120" align=center />
-[wechat_reward]:https://mrchens.github.io/images/wechat_reward.JPG "5毛一块赞助一下"
-[alipay_reward]:https://mrchens.github.io/images/alipay_reward.JPG "5毛一块赞助一下"
+<img src="https://mrchens.github.io/images/alipay_reward.JPG" width="120" height="120" align=center />
 [wechat_qrcode]:https://mrchens.github.io/images/wechat_qrcode.jpg "扫码关注一个很懒的程序员!"
