@@ -4,6 +4,13 @@
 
 [砸壳(破解)工具](https://github.com/stefanesser/dumpdecrypted.git)
 
+### 砸壳时遇见如下
+    dyld: could not load inserted library 'dumpdecrypted.dylib' because no suitable image found. Did find:
+    dumpdecrypted.dylib: required code signature missing for 'dumpdecrypted.dylib'
+
+    security find-identity -v -p codesigning
+    codesign --force --verify --verbose --sign "iPhone Developer: xxx xxxx (xxxxxxxxxx)" dumpdecrypted.dylib
+
 ### 本目录下已经预先放置好了需要使用的工具，如果不能使用请从上面的网址去download新的工具来。
 
 从App Store下载的ipa是需要先砸壳然后再使用`class-dump`才能导出头文件.
@@ -27,3 +34,4 @@
 
 
 ### 在使用过程中如果有任何问题或者改良的方案欢迎提issue和pr.
+
