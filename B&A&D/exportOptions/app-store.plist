@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>stripSwiftSymbols</key>
+	<true/>
+	<key>signingStyle</key>
+	<string>automatic</string>
+	<key>thinning</key>
+	<string>&lt;none&gt;</string>
+	<key>compileBitcode</key>
+	<false/>
+	<key>method</key>
+	<string>app-store</string>
+	<key>uploadBitcode</key>
+	<false/>
+	<key>teamID</key>
+	<string>xxxxxx</string>
+	<key>uploadSymbols</key>
+	<true/>
+	<key>manifest</key>
+	<dict>
+		<key>appURL</key>
+		<string>http://cache.default.server.matocloud.com:39900/static.server.matocloud.com:8080/staticresource/static/cert/bms/app/package/UOne-free-2.2.6.ipa?t=1472549634827</string>
+		<key>displayImageURL</key>
+		<string>http://static.server.matocloud.com:8080/staticresource/static/cert/bms/app/package/com.chinanetcenter.UOne_AppIcon_57x57.png</string>
+		<key>fullSizeImageURL</key>
+		<string>http://static.server.matocloud.com:8080/staticresource/static/cert/bms/app/package/com.chinanetcenter.UOne_AppIcon_512x512.png</string>
+		<key>subtitle</key>
+		<string>XXXX</string>
+		<key>title</key>
+		<string>XXXX</string>
+	</dict>
+</dict>
+</plist>
