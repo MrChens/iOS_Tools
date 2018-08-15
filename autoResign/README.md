@@ -85,5 +85,5 @@
 [provisioning]:https://github.com/MrChens/iOS_Tools/blob/master/aUtoReSiGn/resign/provisioning%20profiles.png
 [certificate]:https://github.com/MrChens/iOS_Tools/blob/master/aUtoReSiGn/resign/certificate.png
 
-<img src="https://mrchens.github.io/images/wechat_reward.JPG" width="120" height="120" align=center />
-<img src="https://mrchens.github.io/images/alipay_reward.jpg" width="120" height="120" align=center />
+<img src="https://mrchens.github.io/images/wechat_reward.JPG" width="120" height="120" align=right />
+<img src="https://mrchens.github.io/images/alipay_reward.jpg" width="120" height="120" align=left />
