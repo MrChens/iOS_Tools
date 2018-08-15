@@ -4,7 +4,7 @@
 if [ $# -lt 1 ]; then
     echo ""
     echo "resign.sh Usage:"
-    echo "\t required: ./resign.sh APP_NAME.ipa"
+    echo "\t required: ./resign.sh APP_NAME.ipa true"
     exit 0
 fi
 
@@ -14,11 +14,19 @@ echo "read config.plist"
 
 TARGET_IPA_PACKAGE_NAME=$1                                                         # 需要被重签的ipa名字
 TM_IPA_PACKAGE_NAME="${TARGET_IPA_PACKAGE_NAME%.*}_TM.ipa"                         # 重签名以后的ipa名字
-PROVISION_FILE=$NEW_MOBILEPROVISION
 PAYLOAD_DIR="Payload"
 APP_DIR=""
+PROVISION_FILE=$NEW_MOBILEPROVISION
 CODESIGN_KEY=$CODESIGN_IDENTITIES
 ENTITLEMENTS_FILE=$ENTITLEMENTS
+echo -e "$2"
+if [[ $2 == 'true' ]]; then
+  echo "resign with development type"
+    PROVISION_FILE=$NEW_MOBILEPROVISION_DEV
+    CODESIGN_KEY=$CODESIGN_IDENTITIES_DEV
+    ENTITLEMENTS_FILE=$ENTITLEMENTS_DEV
+fi
+
 OLD_MOBILEPROVISION="embedded.mobileprovision" # 配置文件
 DEVELOPER=`xcode-select -print-path`
 TARGET_APP_FRAMEWORKS_PATH=""

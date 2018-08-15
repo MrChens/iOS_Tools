@@ -3,14 +3,18 @@
 <plist version="1.0">
 <dict>
 	<key>application-identifier</key>
-	<string>xxx.com.xxx.xxx</string>
+	<string>yyyy.com.xxx.xxx</string>
+	<key>com.apple.developer.team-identifier</key>
+	<string>yyyy</string>
+	<key>com.apple.developer.associated-domains</key>
+	<string>*</string>
 	<key>aps-environment</key>
-	<string>production</string>
+	<string>development</string>
 	<key>get-task-allow</key>
-	<false/>
+	<true/>
 	<key>keychain-access-groups</key>
 	<array>
-		<string>xx.*</string>
+		<string>yyyy.*</string>
 	</array>
 </dict>
 </plist>
