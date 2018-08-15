@@ -303,7 +303,6 @@ elif [[ $1 == *"config"* ]]; then
        elif [[ $TYPE == 'ad-hoc' ]]; then
          build_appStore $VERSION $BUILDVERSION ad-hoc
        elif [[ $TYPE == 'development' ]]; then
-         echo "ddddd"
          build_enterprise $VERSION $DE_BUILDVERSION development Debug
        fi
 else

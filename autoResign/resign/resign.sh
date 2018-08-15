@@ -5,6 +5,8 @@ if [ $# -lt 1 ]; then
     echo ""
     echo "resign.sh Usage:"
     echo "\t required: ./resign.sh APP_NAME.ipa true"
+    echo "\t the second params is optional feature which allow you set get-task-allow to true"
+
     exit 0
 fi
 
