@@ -16,6 +16,11 @@
 	<false/>
 	<key>teamID</key>
 	<string>xxxxx</string>
+	<key>provisioningProfiles</key>
+	<dict>
+		<key>com.xxxx.yyyy</key>
+		<string>provisioningProfilesName</string>
+	</dict>
 	<key>manifest</key>
 	<dict>
 		<key>appURL</key>
