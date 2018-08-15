@@ -3,7 +3,7 @@
 2. Xcode8.0以上.
 
 # 2. 使用方式:       
-1. 直接在终端运行`autoResign.sh`.
+1. 直接在终端运行`aUtoReSiGn.sh`.
 2. 将要需要企业重签名的`ipa`放入`input文件夹`中.
 3. 企业重签名后的`ipa`文件会自动放入`output文件夹`中.
 4. 默认情况下重签名的是Distribution版的，如需重签名`Development`版的请运行`resign/resign.sh`脚本
@@ -61,9 +61,9 @@
 
 ---
 # 文件结构:
-    autoResign
+    aUtoReSiGn
     │   ├── README.md
-    │   ├── autoResign.sh
+    │   ├── aUtoReSiGn.sh
     │   └── resign
     │       ├── EnterPrise_Development.mobileprovision
     │       ├── EnterPrise_Distribution.mobileprovision
@@ -82,8 +82,8 @@
 
 [wechat_qrcode]:https://mrchens.github.io/images/wechat_qrcode.jpg "扫码关注一个很懒的程序员!"
 
-[provisioning]:https://github.com/MrChens/iOS_Tools/blob/master/autoResign/resign/provisioning%20profiles.png
-[certificate]:https://github.com/MrChens/iOS_Tools/blob/master/autoResign/resign/certificate.png
+[provisioning]:https://github.com/MrChens/iOS_Tools/blob/master/aUtoReSiGn/resign/provisioning%20profiles.png
+[certificate]:https://github.com/MrChens/iOS_Tools/blob/master/aUtoReSiGn/resign/certificate.png
 
 <img src="https://mrchens.github.io/images/wechat_reward.JPG" width="120" height="120" align=center />
 <img src="https://mrchens.github.io/images/alipay_reward.jpg" width="120" height="120" align=center />
