@@ -11,6 +11,6 @@
 [jailbreaking]:https://github.com/MrChens/iOS_Tools/tree/master/inject_with_jailbreaking
 [class_dump]:https://github.com/MrChens/iOS_Tools/tree/master/class_dump
 [codeObfuscated]:https://github.com/MrChens/codeObfuscated
-[aUtoReSiGn]:https://github.com/MrChens/iOS_Tools/tree/master/aUtoReSiGn
+[aUtoReSiGn]:https://github.com/MrChens/iOS_Tools/tree/master/autoResign
 [iOS_Tools]:https://github.com/MrChens/iOS_Tools
 [B&A&D]:https://github.com/MrChens/iOS_Tools/tree/master/B%26A%26D
