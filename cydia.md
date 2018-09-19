@@ -19,7 +19,7 @@
     - plutil (com.Erica.Utilities): 支持设备上对plist文件进行操作
     - strings(Binutils): 打印某个文件的可打印字符串，便于了解一些非文本文件的内容。比如可用来查找浏览器Cokkies内容
     - cycript: TBD 通过`ctrl+d`退出
-    
+    - AppSync: 安装未经过认证的软件
     # 命令示例子
     - APT 0.6 Transitional
         - apt-cache search <pkg-name> 查找软件包
@@ -63,6 +63,16 @@
 # 常用的源
 - http://apt.saurik.com/
 - http://apt.thebigboss.org/repofiles/cydia/
-
+- https://cydia.angelxwind.net/
 
 http://www.saurik.com/id/1
+
+# cydia can't access network
+1. cd  /var/preferences
+2. backup
+3. rm com.apple.networkextension.plist
+4. rm com.apple.networkextension.cache.plist
+5. rm com.apple.networkextension.necp.plist
+6. 提醒: 如果你是第一次使用的同学
+        cydia启用网络之后 会搜索到cydia的更新 更新之后 的cydia又会无法联网.
+        请再去删一次 3个文件然后再重启 即可.
