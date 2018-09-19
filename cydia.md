@@ -73,6 +73,4 @@ http://www.saurik.com/id/1
 3. rm com.apple.networkextension.plist
 4. rm com.apple.networkextension.cache.plist
 5. rm com.apple.networkextension.necp.plist
-6. 提醒: 如果你是第一次使用的同学
-        cydia启用网络之后 会搜索到cydia的更新 更新之后 的cydia又会无法联网.
-        请再去删一次 3个文件然后再重启 即可.
+6. 提醒: 如果你是第一次使用的同学cydia启用网络之后 会搜索到cydia的更新 更新之后 的cydia又会无法联网.请再去删一次 3个文件然后再重启 即可.
