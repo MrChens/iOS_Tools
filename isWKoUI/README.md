@@ -15,6 +15,10 @@
   - 选择其中一个网址，会弹出对应的`Web Inspector`.(PS:中文应该叫web检查器)
   - 然后在`Console`中输入`window.statusbar.visible`并按回车键,如果输出`true`那么就是`wkwebview`，相反则为`uiwebview`.
 
+# Trick
+ - 一般使用`WKWebview`都会在native这边通过`- (void)addScriptMessageHandler:(id <WKScriptMessageHandler>)scriptMessageHandler name:(NSString *)name;`添加一个script消息的handler，那么就可以通过在`Web Inspector`中输入`window.webkit.messageHandlers`查看是否有输出对应的输出来判断是哪个`webview`
+  - `UIWebview`中的输出为:`TypeError: undefined is not an object (evaluating 'window.webkit.messageHandlers')`
+  - `WKWebview`中的输出为:`UserMessageHandlersNamespace {}`
 ![传说中的下图][iswkoui]
 
 ### 在使用过程中如果有任何问题或者改良的方案欢迎提issue和pr.
