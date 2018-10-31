@@ -19,5 +19,5 @@
 
 ### 在使用过程中如果有任何问题或者改良的方案欢迎提issue和pr.
 
-[iswkoui]:https://github.com/MrChens/iOS_Tools/tree/master/isWKoUI/iswkoui.png
+[iswkoui]:https://github.com/MrChens/iOS_Tools/blob/master/isWKoUI/iswkoui.png
 [aUtoReSiGn]:https://github.com/MrChens/iOS_Tools/tree/master/autoResign
