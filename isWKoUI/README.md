@@ -21,6 +21,9 @@
   - `WKWebview`中的输出为:`UserMessageHandlersNamespace {}`
 ![传说中的下图][iswkoui]
 
+# TODO:
+ - 弄个网址直接弹窗显示检测结果
+
 ### 在使用过程中如果有任何问题或者改良的方案欢迎提issue和pr.
 
 [iswkoui]:https://github.com/MrChens/iOS_Tools/blob/master/isWKoUI/iswkoui.png
