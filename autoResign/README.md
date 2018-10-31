@@ -15,49 +15,46 @@
 
 在使用该脚本前您需要确保做了以下几件事:
 
-> **P.S.:请看完全文后再配置，后面附有文件的详细获取/修改步骤** Development和Distribution的区别在于Development的重签名是可以`get-task-allow`
->
-> 3.1 Development配置
-> -------------------
->
-> -	配置`Development`的企业证书在本地的电脑中(钥匙串中)
-> -	将您下载的`Development`版的`xx.mobileprovision`放入`resign`目录中并重命名为`EnterPrise_Development.mobileprovision`,文件结构如下图`文件结构`所示
-> -	修改`resign`中`Entitlements/developer/Entitlements.plist`的配置
-> -	在`resign.config`文件中修改`CODESIGN_IDENTITIES_DEV`的值为您`Development`版的企业证书名字
+ **P.S.:请看完全文后再配置，后面附有文件的详细获取/修改步骤** Development和Distribution的区别在于Development的重签名是可以`get-task-allow`
 
-3.1 Distribution配置
---------------------
+ ## 3.1 Development配置
+
+ -	配置`Development`的企业证书在本地的电脑中(钥匙串中)
+ -	将您下载的`Development`版的`xx.mobileprovision`放入`resign`目录中并重命名为`EnterPrise_Development.mobileprovision`,文件结构如下图`文件结构`所示
+ -	修改`resign`中`Entitlements/developer/Entitlements.plist`的配置
+ -	在`resign.config`文件中修改`CODESIGN_IDENTITIES_DEV`的值为您`Development`版的企业证书名字
+
+## 3.1 Distribution配置
 
 -	配置`Distribution`的企业证书在本地的电脑中(钥匙串中)
 -	将您下载的`Distribution`版的`yy.mobileprovision`放入`resign`目录中并重命名为`EnterPrise_Distribution.mobileprovision`,文件结构如下图`文件结构`所示
 -	修改`resign`中`Entitlements/production/Entitlements.plist`的配置
 -	在`resign.config`文件中修改`CODESIGN_IDENTITIES_DEV`的值为您`Distribution`版的企业证书名字
 
-3.2 如何修改对应的`Entitlements.plist`
---------------------------------------
+## 3.2 如何修改对应的`Entitlements.plist`
 
 -	假设你的`teamID`为:`yourTeamID`
 -	假设你的`application-identifier`:为`yourTeamID.com.xxx.xxx`
 -	将`application-identifier`中的`yyyy.com.xxx.xxx`改为`yourTeamID.com.xxx.xxx`
 -	将`keychain-access-groups`的中的`yyyy.*`改为`yourTeamID.*`
 
-如果看不懂上面说的是什么鬼. - Development配置 - 将`Entitlements/developer/Entitlements.plist`中的`application-identifier`的值，改为`EnterPrise_Development.mobileprovision`文件中`application-identifier`中对应的值 - 将`Entitlements/developer/Entitlements.plist`中的`keychain-access-groups`的值，改为`EnterPrise_Development.mobileprovision`文件中`keychain-access-groups`中对应的值
+如果看不懂上面说的是什么鬼.
+- Development配置
+	- 将`Entitlements/developer/Entitlements.plist`中的`application-identifier`的值，改为`EnterPrise_Development.mobileprovision`文件中`application-identifier`中对应的值
+	- 将`Entitlements/developer/Entitlements.plist`中的`keychain-access-groups`的值，改为`EnterPrise_Development.mobileprovision`文件中`keychain-access-groups`中对应的值
 
 -	Distribution配置
 	-	将`Entitlements/production/Entitlements.plist`中的`application-identifier`的值，改为`EnterPrise_Distribution.mobileprovision`文件中`application-identifier`中对应的值
 	-	将`Entitlements/production/Entitlements.plist`中的`keychain-access-groups`的值，改为`EnterPrise_Distribution.mobileprovision`文件中`keychain-access-groups`中对应的值
 
-3.3 如何获取对应的`xx.mobileprovision`
---------------------------------------
+## 3.3 如何获取对应的`xx.mobileprovision`
 
 -	Development
 	-	登陆你的企业开发者账号，选择`Provisioning Profiles`下的`Development`下载`Type`为`iOS Development`的`Provisioning Profiles`文件(P.S.:没试过`Type`为`iOS UniversalDistribution`的)
 -	Distribution
 	-	登陆你的企业开发者账号，选择`Provisioning Profiles`下的`Distribution`下载`Type`为`iOS Distribution`的`Provisioning Profiles`文件(P.S.:没试过`Type`为`iOS UniversalDistribution`的)
 
-3.4 如何获取您证书的名字
-------------------------
-
+# 3.4 如何获取您证书的名字
 -	Development
 	-	打开电脑中的`Keychain Access`
 	-	找到您的`Development`企业证书，并双击
