@@ -54,7 +54,7 @@
 -	Distribution
 	-	登陆你的企业开发者账号，选择`Provisioning Profiles`下的`Distribution`下载`Type`为`iOS Distribution`的`Provisioning Profiles`文件(P.S.:没试过`Type`为`iOS UniversalDistribution`的)
 
-# 3.4 如何获取您证书的名字
+## 3.4 如何获取您证书的名字
 -	Development
 	-	打开电脑中的`Keychain Access`
 	-	找到您的`Development`企业证书，并双击
