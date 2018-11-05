@@ -117,15 +117,17 @@ ps:最后生成的`.crash`文件只会解析当前项目的代码，其余的还
 2. 从`Binary Images:
 0x102ce4000 - 0x102ceffff wspxDemo arm64  <b0ffd72fc5c33a59bf9730202c795564> /var/containers/Bundle/Application/DF7AAB28-9FF0-4EA1-99EC-C50EB87C16B5/wspxDemo.app/wspxDemo`中我们拿到`b0ffd72fc5c33a59bf9730202c795564`
 3. 在终端执行`dwarfdump --uuid wspxDemo.app.dSYM/`后得到如下的输出:
-  ```
-    Mero:wspxDemo 2018-11-05 12-56-20 dc$ dwarfdump --uuid wspxDemo.app.dSYM/
+
+
+    ```Mero:wspxDemo 2018-11-05 12-56-20 dc$ dwarfdump --uuid wspxDemo.app.dSYM/
     UUID: 43C734F8-405F-3970-8B8D-D58575672912 (armv7) wspxDemo.app.dSYM/Contents/Resources/DWARF/wspxDemo
     UUID: B0FFD72F-C5C3-3A59-BF97-30202C795564 (arm64) wspxDemo.app.dSYM/Contents/Resources/DWARF/wspxDemo```
 
 4. 对比步骤2和3的结果会发现:`b0ffd72fc5c33a59bf9730202c795564`和`B0FFD72F-C5C3-3A59-BF97-30202C795564`是一致的，所以该`wspxDemo  2018-11-5, 2-42 PM.crash.crash`对应的`dysm`就是`wspxDemo.app.dSYM`
 5. 在终端执行命令：`./symbolicatecrash wspxDemo\ \ 2018-11-5\,\ 2-42\ PM.crash wspxDemo.app.dSYM/ > output.crash`得到如下的输出:
-    ```
-    Mero:wspxDemo 2018-11-05 12-56-20 dc$ ./symbolicatecrash wspxDemo\ \ 2018-11-5\,\ 2-42\ PM.crash wspxDemo.app.dSYM/ > output.crash
+
+
+    ```Mero:wspxDemo 2018-11-05 12-56-20 dc$ ./symbolicatecrash wspxDemo\ \ 2018-11-5\,\ 2-42\ PM.crash wspxDemo.app.dSYM/ > output.crash
     Error: "DEVELOPER_DIR" is not defined at ./symbolicatecrash line 69.```
 
 6. 报错:`Error: "DEVELOPER_DIR" is not defined at ./symbolicatecrash line 69.`
