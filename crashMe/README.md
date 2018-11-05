@@ -18,7 +18,7 @@ ps:最后生成的`.crash`文件只会解析当前项目的代码，其余的还
 ## 实际操作
 1. 从`iPhone`中获取`wspxDemo  2018-11-5, 2-42 PM.crash.crash`文件如下(只保留需要的关键信息)
 
-
+    ```
     Incident Identifier: 211AB31B-F097-47DC-83ED-3AC6B05A1F7A
     CrashReporter Key:   991cabc05f20cb4812ea851d9b4c57cf7b9c00c2
     Hardware Model:      iPhone10,3
@@ -112,7 +112,7 @@ ps:最后生成的`.crash`文件只会解析当前项目的代码，其余的还
         sp: 0x000000016d11a4a0   pc: 0x00000001dcb67104 cpsr: 0x00000000
 
     Binary Images:
-    0x102ce4000 - 0x102ceffff wspxDemo arm64  <b0ffd72fc5c33a59bf9730202c795564> /var/containers/Bundle/Application/DF7AAB28-9FF0-4EA1-99EC-C50EB87C16B5/wspxDemo.app/wspxDemo
+    0x102ce4000 - 0x102ceffff wspxDemo arm64  <b0ffd72fc5c33a59bf9730202c795564> /var/containers/Bundle/Application/DF7AAB28-9FF0-4EA1-99EC-C50EB87C16B5/wspxDemo.app/wspxDemo```
 
 2. 从`Binary Images:
 0x102ce4000 - 0x102ceffff wspxDemo arm64  <b0ffd72fc5c33a59bf9730202c795564> /var/containers/Bundle/Application/DF7AAB28-9FF0-4EA1-99EC-C50EB87C16B5/wspxDemo.app/wspxDemo`中我们拿到`b0ffd72fc5c33a59bf9730202c795564`
