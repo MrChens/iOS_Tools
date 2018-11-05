@@ -17,6 +17,8 @@ ps:最后生成的`.crash`文件只会解析当前项目的代码，其余的还
 
 ## 实际操作
 1. 从`iPhone`中获取`wspxDemo  2018-11-5, 2-42 PM.crash.crash`文件如下(只保留需要的关键信息)
+
+
     Incident Identifier: 211AB31B-F097-47DC-83ED-3AC6B05A1F7A
     CrashReporter Key:   991cabc05f20cb4812ea851d9b4c57cf7b9c00c2
     Hardware Model:      iPhone10,3
@@ -28,7 +30,6 @@ ps:最后生成的`.crash`文件只会解析当前项目的代码，其余的还
     Role:                Foreground
     Parent Process:      launchd [1]
     Coalition:           com.chinanetcenter.UOne [738]
-
 
     Date/Time:           2018-11-05 14:42:17.6018 +0800
     Launch Time:         2018-11-05 14:42:17.3303 +0800
@@ -139,6 +140,8 @@ ps:最后生成的`.crash`文件只会解析当前项目的代码，其余的还
 8. 如果没有报任何其他错误，则说明你已经成功把crash符号了，这时打开output.crash开始查看崩溃堆栈吧
 9. 如下是符号化后的output.crash文件的内容:
 
+
+
     Incident Identifier: 211AB31B-F097-47DC-83ED-3AC6B05A1F7A
     CrashReporter Key:   991cabc05f20cb4812ea851d9b4c57cf7b9c00c2
     Hardware Model:      iPhone10,3
@@ -150,7 +153,6 @@ ps:最后生成的`.crash`文件只会解析当前项目的代码，其余的还
     Role:                Foreground
     Parent Process:      launchd [1]
     Coalition:           com.chinanetcenter.UOne [738]
-
 
     Date/Time:           2018-11-05 14:42:17.6018 +0800
     Launch Time:         2018-11-05 14:42:17.3303 +0800
