@@ -8,7 +8,7 @@
 - `codeObfuscated` 改良版的代码混淆[传送门][codeObfuscated]
 - `B&A&D` 构建,打包,并提交Itunesconnect上传dsym文件到svn以供后续Debug使用[传送门][B&A&D]
 - `isWKoUI` 检测app内的页面是`WKWebview`还是`UIWebview`[传送门][isWKoUI]
-- `crashMe`通过crash文件排查app崩溃的问题[ 传送门][crashMe]
+- `crashMe` 演示如何通过`crash`文件排查`app`崩溃的问题[ 传送门][crashMe]
 
 ### 在使用过程中如果有任何问题或者改良的方案欢迎提issue和pr.
 
