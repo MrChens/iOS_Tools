@@ -18,7 +18,7 @@
     - `itracker`
 
 - 修改`Webview`中获取`title`和`url`的方式
-将js获取的方式改为https://developer.apple.com/library/content/documentation/Cocoa/Conceptual/DisplayWebContent/Tasks/LocationChanges.html#//apple_ref/doc/uid/20002027-CJBEHAAG中提到的几个代理方案，为以后将webview切换到wkwebview做准备。
+将js获取的方式改为https://developer.apple.com/library/content/documentation/Cocoa/Conceptual/DisplayWebContent/Tasks/LocationChanges.html#//apple_ref/doc/uid/20002027-CJBEHAAG 中提到的几个代理方案，为以后将webview切换到wkwebview做准备。
 - 获取手机安装的`app`列表:https://github.com/lanvsblue/AppBrowser
 
 - `iOS`也试试使用`jekins`？还是用现在的自动打包脚本？使用`jekins`可能说以后用`xpms`就能实现打包的发布的动作。
