@@ -29,7 +29,7 @@
 -	配置`Distribution`的企业证书在本地的电脑中(钥匙串中)
 -	将您下载的`Distribution`版的`yy.mobileprovision`放入`resign`目录中并重命名为`EnterPrise_Distribution.mobileprovision`,文件结构如下图`文件结构`所示
 -	修改`resign`中`Entitlements/production/Entitlements.plist`的配置
--	在`resign.config`文件中修改`CODESIGN_IDENTITIES_DEV`的值为您`Distribution`版的企业证书名字
+-	在`resign.config`文件中修改`CODESIGN_IDENTITIES`的值为您`Distribution`版的企业证书名字
 
 ## 3.2 如何修改对应的`Entitlements.plist`
 
