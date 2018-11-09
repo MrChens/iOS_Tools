@@ -9,7 +9,8 @@
 1.	直接在终端运行`aUtoReSiGn.sh`.
 2.	将要需要企业重签名的`ipa`放入`input文件夹`中.
 3.	企业重签名后的`ipa`文件会自动放入`output文件夹`中.
-4.	默认情况下重签名的是Distribution版的，如需重签名`Development`版的请运行`resign/resign.sh`脚本
+4.	默认情况下重签名的是Distribution版的，如需重签名`Development`版的请修改`resign.config`中的`GET_TASK_ALLOW`为`true`
+5. 如若不需要自动重签名，请直接运行`resign.sh`脚本
 
 # 3. 重要的:
 
