@@ -49,12 +49,16 @@ function monitor_ipa() {
                             # echo "@2CurrentPath:$PWD"
                             cd "${RESIGN_PATH}/"
                             # echo "@3CurrentPath:$PWD"
-                            "./resign.sh" $APP_NAME $PROVISIONING_PROFILE
+                            "./resign.sh" $APP_NAME $GET_TASK_ALLOW
                             cd "-"
                             # echo "@4CurrentPath:$PWD"
                             rm -rf "${RESIGN_PATH}/${APP_NAME}"
                             FINAL_FILE=`ls ${RESIGN_PATH} | grep "ipa"`
-                            mv "${RESIGN_PATH}/${FINAL_FILE}" "${OUTPUT_PATH}"
+                            if [[ -f  "${RESIGN_PATH}/${FINAL_FILE}" ]]; then
+                                mv "${RESIGN_PATH}/${FINAL_FILE}" "${OUTPUT_PATH}"
+                            else
+                                echo "failed: file not exist"
+                            fi
                             echo "TIME:`date "${CURRENT_TIME_FORMAT}"`"
                         else
                                 echo "NOT EXIST PACKAGE:${i}"
