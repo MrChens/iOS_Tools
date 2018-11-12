@@ -10,12 +10,14 @@ source ./resign/resign.config
 PROVISIONING_PROFILE=$NEW_MOBILEPROVISION
 CURRENT_TIME_FORMAT="+%m-%d-%y, %l.%M.%S %p"
 
+WHICH_BREW=`which brew`
+WHICH_FSWATCH=`which fswatch`
+WHICH_IDEVICEINSTALLER=`which ideviceinstaller`
+
 SCAN_TITME=1 #扫描文件变化的间隔  1/秒
-function checkSystem() {
-    WHICH_BREW=`which brew`
-    WHICH_FSWATCH=`which fswatch`
-echo -e "MYPATH:$MYPATH"
-echo -e "INPUT_PATH:$INPUT_PATH"
+function checkFswatch() {
+    echo -e "MYPATH:$MYPATH"
+    echo -e "INPUT_PATH:$INPUT_PATH"
 # exit 1
 
     if [[ ${WHICH_FSWATCH} == *"fswatch"* ]]; then
@@ -32,37 +34,45 @@ echo -e "INPUT_PATH:$INPUT_PATH"
     fi
 }
 
-function monitor_ipa_in_output() {
-    fswatch -l $SCAN_TITME -v --monitor=fsevents_monitor -0 "${OUTPUT_PATH}/" | while read -d "" event
-    do
-        # echo "event:${event}"
-        echo "File has changed in ${OUTPUT_PATH}"
-        if [[ ${event} == *"ipa" ]]; then
-            IFS='/' read -ra array <<< ${event}
-                for i in ${array[@]}; do
-                    if [[ ${i} == *"ipa" ]]; then
-                        if [[ -e "${OUTPUT_PATH}/${i}" ]]; then
-                            echo "READY TO install ipa:${i} to iPhone"
-                            ideviceinstaller -g "${OUTPUT_PATH}/${i}"
-                        fi
-                    fi
-                done
+function checkIdeviceinstaller() {
+    if [[ ${WHICH_IDEVICEINSTALLER} == *"ideviceinstaller"* ]]; then
+        echo "ideviceinstaller is installed."
+    else
+        if [[ ${WHICH_BREW} == *"brew"* ]]; then
+            echo "brew has installed."
+            echo "auto install ideviceinstaller, please wait I'm working on:"
+            brew install ideviceinstaller
+            # brew uninstall ideviceinstaller
+            # brew uninstall libimobiledevice
+            # brew install --HEAD libimobiledevice
+            # brew link --overwrite libimobiledevice
+            # brew install ideviceinstaller
+            # brew link --overwrite ideviceinstaller
+            # or
+            # brew update
+            # brew uninstall --ignore-dependencies libimobiledevice
+            # brew uninstall --ignore-dependencies usbmuxd
+            # brew install --HEAD usbmuxd
+            # brew unlink usbmuxd
+            # brew link usbmuxd
+            # brew install --HEAD libimobiledevice
         fi
-    done
+    fi
 }
 
-function monitor_ipa() {
-    fswatch -l $SCAN_TITME -v --monitor=fsevents_monitor -0 "${INPUT_PATH}/" | while read -d "" event
-    do
-        echo "file has changed in ${INPUT_PATH}"
-        if [[ ${event} == *"ipa" && ${event} != *"TM.ipa" ]]; then
-            IFS='/' read -ra array <<< ${event}
-                for i in ${array[@]}; do
-                    if [[ ${i} == *"ipa" ]]; then
-                        echo "current file:${i}"
-                        if [[ -e "${INPUT_PATH}/${i}" ]]; then
-                            echo "READY TO RESIGN PACKAGE:${i}"
-                            APP_NAME=${i}
+function doInstall() {
+    echo "call doInstall with:$1"
+    if [[ -f "${OUTPUT_PATH}/${1}" ]]; then
+                            echo "READY TO INSTALL ${1} TO IPHONE"
+                            ideviceinstaller -g "${OUTPUT_PATH}/${1}"
+                        fi
+}
+
+function doResignWork() {
+    echo "call doResignWork with:$1"
+    if [[ -f "${INPUT_PATH}/${1}" ]]; then
+                            echo "READY TO RESIGN ${1}"
+                            APP_NAME=${1}
                             # echo "@1CurrentPath:$PWD"
                             cp "$INPUT_PATH/${APP_NAME}" "${RESIGN_PATH}/"
                             # echo "@2CurrentPath:$PWD"
@@ -80,14 +90,37 @@ function monitor_ipa() {
                             fi
                             echo "TIME:`date "${CURRENT_TIME_FORMAT}"`"
                         else
-                                echo "NOT EXIST PACKAGE:${i}"
+                                echo "NOT EXIST PACKAGE:${1}"
                         fi
+
+}
+
+function monitor_ipa() {
+    fswatch -l $SCAN_TITME -v --monitor=fsevents_monitor -0 "${INPUT_PATH}/" "${OUTPUT_PATH}/" | while read -d "" event
+    do
+        echo "FINE HAS CHANGED EVENT:${event}"
+        if [[ ${event} == *"${INPUT_DIR}"* && ${event} == *"ipa" && ${event} != *"TM.ipa" ]]; then
+            echo "HANDLE INPUT_DIR EVENT:"
+            IFS='/' read -ra array <<< ${event}
+                for i in ${array[@]}; do
+                    if [[ ${i} == *"ipa" ]]; then
+                        doResignWork "${i}"
+                    fi
+                done
+        elif [[ ${event} == *"${OUTPUT_DIR}"*  ]]; then
+            echo "HANDLE OUTPUT_DIR EVNET:"
+            IFS='/' read -ra array <<< ${event}
+                for i in ${array[@]}; do
+                    if [[ ${i} == *"TM.ipa" ]]; then
+                        doInstall "${i}"
                     fi
                 done
         fi
     done
 }
 
-checkSystem
+
+
+checkFswatch
+checkIdeviceinstaller
 monitor_ipa
-monitor_ipa_in_output
