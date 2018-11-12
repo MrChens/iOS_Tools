@@ -65,6 +65,8 @@ function doInstall() {
     if [[ -f "${OUTPUT_PATH}/${1}" ]]; then
                             echo "READY TO INSTALL ${1} TO IPHONE"
                             ideviceinstaller -g "${OUTPUT_PATH}/${1}"
+                        else
+                            echo "${1} NOT EXIST"
                         fi
 }
 
@@ -90,7 +92,7 @@ function doResignWork() {
                             fi
                             echo "TIME:`date "${CURRENT_TIME_FORMAT}"`"
                         else
-                                echo "NOT EXIST PACKAGE:${1}"
+                                echo "${1} NOT EXIST"
                         fi
 
 }
