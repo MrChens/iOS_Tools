@@ -23,7 +23,7 @@ echo -e "INPUT_PATH:$INPUT_PATH"
     else
         if [[ ${WHICH_BREW} == *"brew"* ]]; then
             echo "brew installed"
-            echo "auto install fswatch:"
+            echo "auto install fswatch, please wait I'm working on:"
             brew install fswatch
         else
             echo "auto install brew:"
@@ -32,10 +32,29 @@ echo -e "INPUT_PATH:$INPUT_PATH"
     fi
 }
 
+function monitor_ipa_in_output() {
+    fswatch -l $SCAN_TITME -v --monitor=fsevents_monitor -0 "${OUTPUT_PATH}/" | while read -d "" event
+    do
+        # echo "event:${event}"
+        echo "File has changed in ${OUTPUT_PATH}"
+        if [[ ${event} == *"ipa" ]]; then
+            IFS='/' read -ra array <<< ${event}
+                for i in ${array[@]}; do
+                    if [[ ${i} == *"ipa" ]]; then
+                        if [[ -e "${OUTPUT_PATH}/${i}" ]]; then
+                            echo "READY TO install ipa:${i} to iPhone"
+                            ideviceinstaller -g "${OUTPUT_PATH}/${i}"
+                        fi
+                    fi
+                done
+        fi
+    done
+}
+
 function monitor_ipa() {
     fswatch -l $SCAN_TITME -v --monitor=fsevents_monitor -0 "${INPUT_PATH}/" | while read -d "" event
     do
-        echo "file has changed"
+        echo "file has changed in ${INPUT_PATH}"
         if [[ ${event} == *"ipa" && ${event} != *"TM.ipa" ]]; then
             IFS='/' read -ra array <<< ${event}
                 for i in ${array[@]}; do
@@ -71,3 +90,4 @@ function monitor_ipa() {
 
 checkSystem
 monitor_ipa
+monitor_ipa_in_output
