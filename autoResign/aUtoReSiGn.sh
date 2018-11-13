@@ -18,6 +18,8 @@ SCAN_TITME=1 #扫描文件变化的间隔  1/秒
 
 function installHomebrew() {
     echo "auto install Homebrew:"
+    echo "if any Error shows, mybe you can need this:"
+    echo "https://brew.sh"
     /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 }
 
@@ -37,7 +39,7 @@ function checkFswatch() {
     # echo -e "MYPATH:$MYPATH"
     # echo -e "INPUT_PATH:$INPUT_PATH"
     # exit 1
-
+    echo "checking fswatch status ..."
     if [[ ${WHICH_FSWATCH} == *"fswatch"* ]]; then
         echo "fswatch is installed."
     else
@@ -53,6 +55,7 @@ function checkFswatch() {
 
 
 function checkIdeviceinstaller() {
+    echo "checking ideviceinstaller status ..."
     if [[ ${WHICH_IDEVICEINSTALLER} == *"ideviceinstaller"* ]]; then
         echo "ideviceinstaller is installed."
     else
