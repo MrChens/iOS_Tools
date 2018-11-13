@@ -65,20 +65,21 @@ function checkIdeviceinstaller() {
             echo "auto install ideviceinstaller, please wait I'm working on:"
             echo "if any Error shows, mybe you can use following command:"
             echo "
-                    brew uninstall ideviceinstaller
-                    brew uninstall libimobiledevice
-                    brew install --HEAD libimobiledevice
-                    brew link --overwrite libimobiledevice
-                    brew install ideviceinstaller
-                    brew link --overwrite ideviceinstaller
-                    or
                     brew update
                     brew uninstall --ignore-dependencies libimobiledevice
                     brew uninstall --ignore-dependencies usbmuxd
                     brew install --HEAD usbmuxd
                     brew unlink usbmuxd
                     brew link usbmuxd
-                    brew install --HEAD libimobiledevice"
+                    brew install --HEAD libimobiledevice
+                    or
+                    brew uninstall ideviceinstaller
+                    brew uninstall libimobiledevice
+                    brew install --HEAD libimobiledevice
+                    brew link --overwrite libimobiledevice
+                    brew install ideviceinstaller
+                    brew link --overwrite ideviceinstaller
+                    "
             brew install ideviceinstaller
         else
             installHomebrew
