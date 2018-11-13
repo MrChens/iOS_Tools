@@ -11,6 +11,7 @@
 3.	企业重签名后的`ipa`文件会自动放入`output文件夹`中.
 4.	默认情况下重签名的是Distribution版的，如需重签名`Development`版的请修改`resign.config`中的`GET_TASK_ALLOW`为`true`
 5. 如若不需要自动重签名，请直接运行`resign.sh`脚本
+6. 如若需要自动安装`ipa`到手机上，请修改`resign.config`中的`AUTO_INSTALL_IPA`为`true`
 
 # 3. 重要的:
 
@@ -64,6 +65,11 @@
 	-	打开电脑中的`Keychain Access`
 	-	找到您的`Distribution`企业证书，并双击
 	-	复制证书`Common Name`中对应的值到`resign.config`的`CODESIGN_IDENTITIES`
+
+## 3.5 如何使用自动安装重签名后的ipa到手机
+- 先使用数据连接线将手机和Mac连接
+- 修改`resign.config`中的`AUTO_INSTALL_IPA`为`true`
+- 运行`aUtoReSiGn.sh`脚本
 
 ### 如果不想使用自动重签名，可以将`xx.ipa`放在`resign`目录下,并执行脚本`resign.sh`
 
