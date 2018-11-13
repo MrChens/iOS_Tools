@@ -34,6 +34,18 @@ function checkFswatch() {
     fi
 }
 
+function checkPathExist() {
+    if [[ ! -e $INPUT_PATH ]]; then
+        echo "MKDIR ${INPUT_PATH}"
+        mkdir $INPUT_PATH
+    fi
+
+    if [[ ! -e $OUTPUT_PATH ]]; then
+        echo "MKDIR ${OUTPUT_PATH}"
+        mkdir $OUTPUT_PATH
+    fi
+}
+
 function checkIdeviceinstaller() {
     if [[ ${WHICH_IDEVICEINSTALLER} == *"ideviceinstaller"* ]]; then
         echo "ideviceinstaller is installed."
@@ -122,7 +134,7 @@ function monitor_ipa() {
 }
 
 
-
+checkPathExist
 checkFswatch
 checkIdeviceinstaller
 monitor_ipa
