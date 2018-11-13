@@ -15,23 +15,10 @@ WHICH_FSWATCH=`which fswatch`
 WHICH_IDEVICEINSTALLER=`which ideviceinstaller`
 
 SCAN_TITME=1 #扫描文件变化的间隔  1/秒
-function checkFswatch() {
-    echo -e "MYPATH:$MYPATH"
-    echo -e "INPUT_PATH:$INPUT_PATH"
-# exit 1
 
-    if [[ ${WHICH_FSWATCH} == *"fswatch"* ]]; then
-        echo "fswatch installed"
-    else
-        if [[ ${WHICH_BREW} == *"brew"* ]]; then
-            echo "brew installed"
-            echo "auto install fswatch, please wait I'm working on:"
-            brew install fswatch
-        else
-            echo "auto install brew:"
-            /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-        fi
-    fi
+function installHomebrew() {
+    echo "auto install Homebrew:"
+    /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 }
 
 function checkPathExist() {
@@ -46,28 +33,52 @@ function checkPathExist() {
     fi
 }
 
+function checkFswatch() {
+    # echo -e "MYPATH:$MYPATH"
+    # echo -e "INPUT_PATH:$INPUT_PATH"
+    # exit 1
+
+    if [[ ${WHICH_FSWATCH} == *"fswatch"* ]]; then
+        echo "fswatch is installed."
+    else
+        if [[ ${WHICH_BREW} == *"brew"* ]]; then
+            echo "brew has installed."
+            echo "auto install fswatch, please wait I'm working on:"
+            brew install fswatch
+        else
+            installHomebrew
+        fi
+    fi
+}
+
+
 function checkIdeviceinstaller() {
     if [[ ${WHICH_IDEVICEINSTALLER} == *"ideviceinstaller"* ]]; then
         echo "ideviceinstaller is installed."
     else
         if [[ ${WHICH_BREW} == *"brew"* ]]; then
+            echo ""
             echo "brew has installed."
             echo "auto install ideviceinstaller, please wait I'm working on:"
+            echo "if any Error shows, mybe you can use following command:"
+            echo "
+                    brew uninstall ideviceinstaller
+                    brew uninstall libimobiledevice
+                    brew install --HEAD libimobiledevice
+                    brew link --overwrite libimobiledevice
+                    brew install ideviceinstaller
+                    brew link --overwrite ideviceinstaller
+                    or
+                    brew update
+                    brew uninstall --ignore-dependencies libimobiledevice
+                    brew uninstall --ignore-dependencies usbmuxd
+                    brew install --HEAD usbmuxd
+                    brew unlink usbmuxd
+                    brew link usbmuxd
+                    brew install --HEAD libimobiledevice"
             brew install ideviceinstaller
-            # brew uninstall ideviceinstaller
-            # brew uninstall libimobiledevice
-            # brew install --HEAD libimobiledevice
-            # brew link --overwrite libimobiledevice
-            # brew install ideviceinstaller
-            # brew link --overwrite ideviceinstaller
-            # or
-            # brew update
-            # brew uninstall --ignore-dependencies libimobiledevice
-            # brew uninstall --ignore-dependencies usbmuxd
-            # brew install --HEAD usbmuxd
-            # brew unlink usbmuxd
-            # brew link usbmuxd
-            # brew install --HEAD libimobiledevice
+        else
+            installHomebrew
         fi
     fi
 }
