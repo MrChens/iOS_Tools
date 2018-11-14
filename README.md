@@ -10,6 +10,7 @@
 - `isWKoUI` 检测app内的页面是`WKWebview`还是`UIWebview`[传送门][isWKoUI]
 - `crashMe` 演示如何通过`crash`文件排查`app`崩溃的问题[ 传送门][crashMe]
 - `nextDay` 演示什么叫做永远没空研究系列[传送门][nextDay]
+- `jailBreak` 记录越狱笔记[传送门][jailBreak]
 
 ### 在使用过程中如果有任何问题或者改良的方案欢迎提issue和pr.
 
@@ -22,3 +23,4 @@
 [isWKoUI]:https://github.com/MrChens/iOS_Tools/tree/master/isWKoUI
 [crashMe]:https://github.com/MrChens/iOS_Tools/tree/master/crashMe
 [nextDay]:https://github.com/MrChens/iOS_Tools/tree/master/nextDay
+[jailBreak]:https://github.com/MrChens/iOS_Tools/tree/master/jailBreak
