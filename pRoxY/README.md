@@ -49,12 +49,14 @@
 - 下载安装`caddy`[installation][caddy doc](也可以使用nginx)：用来将外网的访问代理到内网的`mitmweb`中
 - 安装`screen`:应该也可以不用
 - 编辑配置`Caddyfile`文件:注意使用`nginx`需要配置`websocket`的代理(没用过nginx可能需要自己去google一下)
+```
       http://deafchen.com:8083 {
         proxy / http://127.0.0.1:8081 {
         websocket
         header_upstream -Origin
         }
       }
+```
 
 - 编辑配置`matocloud_proxy.py`
 ```
