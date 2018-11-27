@@ -88,7 +88,7 @@
 
 - 先运行`caddy -conf Caddyfile &`
 - 然后运行`SCREEN -S mitmproxy ./mitmweb --set web_port=8081 --set block_global=false -s matocloud_proxy.py`
-- 关于`screen`的用法[screen][screen]
+- 关于`screen`的用法[screen][screen],[screen trik][screen trik]
 
 
 
@@ -123,3 +123,4 @@
 [mitmproxy doc]:https://docs.mitmproxy.org/stable/overview-installation/
 [caddy doc]:https://github.com/mholt/caddy
 [screen]:https://linux.cn/article-8215-1.html
+[screen trik]:https://www.ibm.com/developerworks/cn/linux/l-cn-screen/index.html
