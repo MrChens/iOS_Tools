@@ -127,8 +127,10 @@ ps:最后生成的`.crash`文件只会解析当前项目的代码，其余的还
 5. 在终端执行命令：`./symbolicatecrash wspxDemo\ \ 2018-11-5\,\ 2-42\ PM.crash wspxDemo.app.dSYM/ > output.crash`得到如下的输出:
 
 
-    ```Mero:wspxDemo 2018-11-05 12-56-20 dc$ ./symbolicatecrash wspxDemo\ \ 2018-11-5\,\ 2-42\ PM.crash wspxDemo.app.dSYM/ > output.crash
-    Error: "DEVELOPER_DIR" is not defined at ./symbolicatecrash line 69.```
+    ```
+	Mero:wspxDemo 2018-11-05 12-56-20 dc$ ./symbolicatecrash wspxDemo\ \ 2018-11-5\,\ 2-42\ PM.crash wspxDemo.app.dSYM/ > output.crash
+    Error: "DEVELOPER_DIR" is not defined at ./symbolicatecrash line 69.
+```
 
 6. 报错:`Error: "DEVELOPER_DIR" is not defined at ./symbolicatecrash line 69.`
 7. 执行如下命令:`export DEVELOPER_DIR="/Applications/XCode.app/Contents/Developer"`然后再执行`5`的命令.执行结果如下:
