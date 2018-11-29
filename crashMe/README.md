@@ -126,21 +126,20 @@ ps:最后生成的`.crash`文件只会解析当前项目的代码，其余的还
 4. 对比步骤2和3的结果会发现:`b0ffd72fc5c33a59bf97c79556430202`和`B0FFD72F-C5C3-3A59-BF97-C79556430202`是一致的，所以该`wspxDemo  2018-11-5, 2-42 PM.crash.crash`对应的`dysm`就是`wspxDemo.app.dSYM`
 5. 在终端执行命令：`./symbolicatecrash wspxDemo\ \ 2018-11-5\,\ 2-42\ PM.crash wspxDemo.app.dSYM/ > output.crash`得到如下的输出:
 
-
     ```
-	Mero:wspxDemo 2018-11-05 12-56-20 dc$ ./symbolicatecrash wspxDemo\ \ 2018-11-5\,\ 2-42\ PM.crash wspxDemo.app.dSYM/ > output.crash
-    Error: "DEVELOPER_DIR" is not defined at ./symbolicatecrash line 69.
-```
+    Mero:wspxDemo 2018-11-05 12-56-20 dc$ ./symbolicatecrash wspxDemo\ \ 2018-11-5\,\ 2-42\ PM.crash wspxDemo.app.dSYM/ > output.crash
+    Error: "DEVELOPER_DIR" is not defined at ./symbolicatecrash line 69.```
 
 6. 报错:`Error: "DEVELOPER_DIR" is not defined at ./symbolicatecrash line 69.`
 7. 执行如下命令:`export DEVELOPER_DIR="/Applications/XCode.app/Contents/Developer"`然后再执行`5`的命令.执行结果如下:
 
-
-    `Mero:wspxDemo 2018-11-05 12-56-20 dc$ export DEVELOPER_DIR="/Applications/XCode.app/Contents/Developer"
-    Mero:wspxDemo 2018-11-05 12-56-20 dc$ ./symbolicatecrash wspxDemo\ \ 2018-11-5\,\ 2-42\ PM.crash wspxDemo.app.dSYM/ > output.crash`
+    ```
+    Mero:wspxDemo 2018-11-05 12-56-20 dc$ export DEVELOPER_DIR="/Applications/XCode.app/Contents/Developer"
+    Mero:wspxDemo 2018-11-05 12-56-20 dc$ ./symbolicatecrash wspxDemo\ \ 2018-11-5\,\ 2-42\ PM.crash wspxDemo.app.dSYM/ > output.crash```
 
 8. 如果没有报任何其他错误，则说明你已经成功把`crash`符号了，这时打开`output.crash`开始查看崩溃堆栈吧
 9. 如下是符号化后的`output.crash`文件的内容:
+
     ```
     Incident Identifier: 211AB31B-F097-47DC-83ED-3AC6B3AC6B05
     CrashReporter Key:   991d9b4c57cf7b9c00c2cabc05f20cb4812ea851
