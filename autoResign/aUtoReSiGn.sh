@@ -18,7 +18,7 @@ SCAN_TITME=1 #扫描文件变化的间隔  1/秒
 
 function installHomebrew() {
     echo "auto install Homebrew:"
-    echo "if any Error shows, mybe you can need this:"
+    echo "if any Error shows, you may need this:"
     echo "https://brew.sh"
     /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 }

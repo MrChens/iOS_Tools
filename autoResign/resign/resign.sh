@@ -14,8 +14,8 @@ source resign.config
 
 echo "read config.plist"
 
-TARGET_IPA_PACKAGE_NAME=$1                                                         # 需要被重签的ipa名字
-TM_IPA_PACKAGE_NAME="${TARGET_IPA_PACKAGE_NAME%.*}_TM.ipa"                         # 重签名以后的ipa名字
+TARGET_IPA_PACKAGE_NAME=$1                                                         
+TM_IPA_PACKAGE_NAME="${TARGET_IPA_PACKAGE_NAME%.*}_TM.ipa"                         # resigned ipa name
 PAYLOAD_DIR="Payload"
 APP_DIR=""
 PROVISION_FILE=$NEW_MOBILEPROVISION
@@ -29,7 +29,7 @@ if [[ $2 == 'true' ]]; then
     ENTITLEMENTS_FILE=$ENTITLEMENTS_DEV
 fi
 
-OLD_MOBILEPROVISION="embedded.mobileprovision" # 配置文件
+OLD_MOBILEPROVISION="embedded.mobileprovision"
 DEVELOPER=`xcode-select -print-path`
 TARGET_APP_FRAMEWORKS_PATH=""
 
