@@ -87,8 +87,26 @@
 ```
 
 - 先运行`caddy -conf Caddyfile &`
-- 然后运行`SCREEN -S mitmproxy ./mitmweb --set web_port=8081 --set block_global=false -s matocloud_proxy.py`
-- 关于`screen`的用法[screen][screen],[screen trik][screen trik]
+
+
+## 可配合使用的选项
+- 1. 配合`screen`使用
+    -   运行`SCREEN -S mitmproxy ./mitmweb --set web_port=8081 --set block_global=false -s matocloud_proxy.py`
+
+- 2. 配合`crontab`使用
+    - 将目录下的`crontabScript.sh`拷贝到`matocloud_proxy.py`同目录下,
+    - 运行`crontab -e`
+    - 输入`00 */1 * * * /root/sourceCode/mitmproxy/mitmproxy-4.0.4-linux/crontabScript.sh >/dev/null 2>&1`让脚本每小时执行一次，用来防止`mitmweb`挂掉后没人去重启
+    
+### 关于`screen`的用法
+- [screen][screen]
+- [screen trik][screen trik]
+
+
+### 关于`crontab`的用法
+
+- [crontab1][crontab1]
+- [crontab2][crontab2]
 
 
 
@@ -109,11 +127,8 @@
 
 
 
-
-
-
-
-
+[crontab1]:https://www.ibm.com/support/knowledgecenter/zh/ssw_aix_71/com.ibm.aix.cmds1/crontab.htm
+[crontab2]:http://einverne.github.io/post/2017/03/crontab-schedule-task.html
 [iPhone proxy]:https://jingyan.baidu.com/article/dca1fa6f620442f1a4405202.html
 [Android proxy]:https://jingyan.baidu.com/article/fd8044faebfaa85030137a72.html
 [certSite]:http://mitm.it
