@@ -52,7 +52,8 @@
 - dpkg -i xxxx.deb (use apt-get install -f command tries to fix this broken package by installing the missing dependency)
     - https://unix.stackexchange.com/questions/159094/how-to-install-a-deb-file-by-dpkg-i-or-by-apt
 - grep -rnw headOutPuts -e 'requestByRemovingPostCheckKey' //查找指定字符串的文件
--otool -l xxxx | grep crypt
+- otool -l xxxx | grep crypt
+- codesign -d --ent :- /path/to/the.app //Inspect the entitlements of a built app
 # 常用文件路径
 - host文件 /private/etc/
 - cydia下载的deb文件 /private/var/cache/apt/archives 2014年11月，iOS8越狱后的deb包的变化: /User/Library/Caches/com.saurik.Cydia/archives/
