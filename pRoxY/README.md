@@ -97,7 +97,7 @@
     - 将目录下的`crontabScript.sh`拷贝到`matocloud_proxy.py`同目录下,
     - 运行`crontab -e`
     - 输入`00 */1 * * * /root/sourceCode/mitmproxy/mitmproxy-4.0.4-linux/crontabScript.sh >/dev/null 2>&1`让脚本每小时执行一次，用来防止`mitmweb`挂掉后没人去重启
-    
+    - 输入`* */120 * * * /root/sourceCode/mitmproxy/mitmproxy-4.0.4-linux/mitmproxy.sh >/dev/null 2>&1`让`mitmproxy.sh`脚本每120分钟执行一次
 ### 关于`screen`的用法
 - [screen][screen]
 - [screen trik][screen trik]
