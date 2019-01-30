@@ -96,9 +96,11 @@
 - 2. 配合`crontab`使用
     - 将目录下的`crontabScript.sh`拷贝到`matocloud_proxy.py`同目录下,
     - 运行`crontab -e`
-    - 输入`00 */1 * * * /root/sourceCode/mitmproxy/mitmproxy-4.0.4-linux/crontabScript.sh >/dev/null 2>&1`让脚本每小时执行一次，用来防止`mitmweb`挂掉后没人去重启
-    - 输入`* */120 * * * /root/sourceCode/mitmproxy/mitmproxy-4.0.4-linux/mitmproxy.sh >/dev/null 2>&1`让`mitmproxy.sh`脚本每120分钟执行一次
+    - 输入`2 */1 * * * /root/sourceCode/mitmproxy/mitmproxy-4.0.4-linux/crontabScript.sh >/dev/null 2>&1`用来防止`mitmweb`挂掉后没人去重启
+    - 输入`3 */1 * * * /root/sourceCode/mitmproxy/mitmproxy-4.0.4-linux/mitmproxy.sh >/dev/null 2>&1`让`mitmproxy.sh`脚本
 ### 关于`screen`的用法
+
+- [crontab][crontab]
 - [screen][screen]
 - [screen trik][screen trik]
 
@@ -126,7 +128,7 @@
 
 
 
-
+[crontab]:https://crontab.guru
 [crontab1]:https://www.ibm.com/support/knowledgecenter/zh/ssw_aix_71/com.ibm.aix.cmds1/crontab.htm
 [crontab2]:http://einverne.github.io/post/2017/03/crontab-schedule-task.html
 [iPhone proxy]:https://jingyan.baidu.com/article/dca1fa6f620442f1a4405202.html
