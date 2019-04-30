@@ -42,6 +42,7 @@
 - tcpdump -i lo0 -s0 -w xxxx.pcapng //抓lo0接口的包
 - ifconfig lo0
 - rvictl -s uuid [Getting a Packet Trace]:https://developer.apple.com/library/content/qa/qa1176/_index.html#//apple_ref/doc/uid/DTS10001707-CH1-SECRVI
+- defaults write ~/Desktop/config_Xcode/plistfiletst key value
 - sudo xcode-select -s /Applications/Xcode.app/Contents/Developer
 - curl - I  "http://ssxxx/hhh.txt"
 - wget -c "http://sssxxx/hhh.txt"
