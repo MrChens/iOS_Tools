@@ -37,11 +37,13 @@
 
 # 常用命令行
 - python tcprelay.py -t 2222:2244
+- uicache //refresh ui
 - ssh root@ip -p 2222
 - scp -P<port> root@<remoteIpAddress>:<remote dir path> <source file path>
 - tcpdump -i lo0 -s0 -w xxxx.pcapng //抓lo0接口的包
 - ifconfig lo0
 - rvictl -s uuid [Getting a Packet Trace]:https://developer.apple.com/library/content/qa/qa1176/_index.html#//apple_ref/doc/uid/DTS10001707-CH1-SECRVI
+- defaults write ~/Desktop/config_Xcode/plistfiletst key value
 - sudo xcode-select -s /Applications/Xcode.app/Contents/Developer
 - curl - I  "http://ssxxx/hhh.txt"
 - wget -c "http://sssxxx/hhh.txt"
@@ -71,7 +73,37 @@ http://www.saurik.com/id/1
 # cydia can't access network
 1. cd  /var/preferences
 2. backup
-3. rm com.apple.networkextension.plist
-4. rm com.apple.networkextension.cache.plist
-5. rm com.apple.networkextension.necp.plist
+3. rm -rf com.apple.networkextension.plist
+4. rm -rf com.apple.networkextension.cache.plist
+5. rm -rf com.apple.networkextension.necp.plist
 6. 提醒: 如果你是第一次使用的同学cydia启用网络之后 会搜索到cydia的更新 更新之后 的cydia又会无法联网.请再去删一次 3个文件然后再重启 即可.
+
+# IPA2Deb
+- mkdir tmp
+- cd tmp
+- mkdir DEBIAN Applications
+- touch DEBIAN/control
+- vim DEBIAN/control
+- 输入如下的文本:
+    Package: com.sharedream.test
+    Name: test
+    Version: 0.1
+    Description: test
+    Section: test
+    Depends: firmware (>= 4.3)
+    Priority: optional
+    Architecture: iphoneos-arm
+    Author: test
+    Homepage: test
+    Maintainer: test
+- cp text.app Applications
+- cd ..
+- dpkg-deb -b tmp test.deb
+- dpkg-scanpackages -m debs >Packages
+- bzip2 -zkf Packages
+
+
+
+
+
+<!-- end -->
