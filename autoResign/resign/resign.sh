@@ -63,16 +63,15 @@ if [ ! -d $PAYLOAD_DIR ]; then
     echo "unzip $TARGET_IPA_PACKAGE_NAME fail"
 fi
 
-for DIR in `ls $PAYLOAD_DIR/`
-do
-    if [ -d $PAYLOAD_DIR/$DIR ]; then
-        APP_DIR=$PAYLOAD_DIR/$DIR
-        echo "APP DIR : $APP_DIR"
-        break
-    fi
-done
+APP_DIR="Payload/fuck.app"
 
-if [ -d $APP_DIR/_CodeSignature ]; then
+FUCK_APP_DIR=$(find ${PAYLOAD_DIR} -type d | grep ".app$" | head -n 1)
+
+# incase of some app name with space
+# eg. "hello world.app"
+mv -i "$FUCK_APP_DIR" "$APP_DIR"
+
+if [ -d "$APP_DIR/_CodeSignature" ]; then
     echo ""
     echo "2. rm $APP_DIR/_CodeSignature"
     rm -rf $APP_DIR/_CodeSignature
@@ -85,25 +84,27 @@ if [ -d $APP_DIR/_CodeSignature ]; then
     cp $PROVISION_FILE $APP_DIR/$OLD_MOBILEPROVISION
     echo ""
     echo "6. codesign....."
-#codesign frameworks
-TARGET_APP_FRAMEWORKS_PATH="$APP_DIR/Frameworks"
-if [[ -d "$TARGET_APP_FRAMEWORKS_PATH" ]]; then
-    for FRAMEWORK in "$TARGET_APP_FRAMEWORKS_PATH/"*; do
-        FILENAME=$(basename $FRAMEWORK)
-        /usr/bin/codesign -f -s "$CODESIGN_KEY" "$FRAMEWORK"
-    done
-fi
-#codesign plugins
-TARGET_APP_PLUGINS_PATH="$APP_DIR/PlugIns"
-if [[ -d "$TARGET_APP_PLUGINS_PATH" ]]; then
-    for PLUGIN in "$TARGET_APP_PLUGINS_PATH/"*; do
-        echo "PLUGIN($PLUGIN)"
-        FILENAME=$(basename $PLUGIN)
-        echo "FILENAME($FILENAME)"
-        /usr/bin/codesign -f -s "$CODESIGN_KEY" "$PLUGIN"
-    done
-fi
 
+    #codesign frameworks
+    TARGET_APP_FRAMEWORKS_PATH="$APP_DIR/Frameworks"
+    if [[ -d "$TARGET_APP_FRAMEWORKS_PATH" ]]; then
+        for FRAMEWORK in "$TARGET_APP_FRAMEWORKS_PATH/"*; do
+            FILENAME=$(basename $FRAMEWORK)
+            /usr/bin/codesign -f -s "$CODESIGN_KEY" "$FRAMEWORK"
+        done
+    fi
+
+    #codesign plugins
+    TARGET_APP_PLUGINS_PATH="$APP_DIR/PlugIns"
+    if [[ -d "$TARGET_APP_PLUGINS_PATH" ]]; then
+        for PLUGIN in "$TARGET_APP_PLUGINS_PATH/"*; do
+            echo "PLUGIN($PLUGIN)"
+            FILENAME=$(basename $PLUGIN)
+            echo "FILENAME($FILENAME)"
+            /usr/bin/codesign -f -s "$CODESIGN_KEY" "$PLUGIN"
+        done
+    fi
+    #codesign with entitlements file
     /usr/bin/codesign -f -s "$CODESIGN_KEY" --entitlements $ENTITLEMENTS_FILE  $APP_DIR
     if [ -d $APP_DIR/_CodeSignature ]; then
         echo ""
