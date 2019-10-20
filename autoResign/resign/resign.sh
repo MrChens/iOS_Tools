@@ -4,8 +4,9 @@
 if [ $# -lt 1 ]; then
     echo ""
     echo "resign.sh Usage:"
-    echo "\t required: ./resign.sh APP_NAME.ipa true"
-    echo "\t the second params is optional feature which allow you set get-task-allow to true"
+    echo "\t required: ./resign.sh APP_NAME.ipa true/free"
+    echo "\t true is optional feature which allow you set get-task-allow to true"
+    echo "\t free is optional feature which allow you codesign ipa with free apple id"
 
     exit 0
 fi
@@ -15,18 +16,27 @@ source resign.config
 echo "read config.plist"
 
 TARGET_IPA_PACKAGE_NAME=$1                                                         
-TM_IPA_PACKAGE_NAME="${TARGET_IPA_PACKAGE_NAME%.*}_TM.ipa"                         # resigned ipa name
+TM_IPA_PACKAGE_NAME="${TARGET_IPA_PACKAGE_NAME%.*}_MC.ipa"                         # resigned ipa name
 PAYLOAD_DIR="Payload"
 APP_DIR=""
 PROVISION_FILE=$NEW_MOBILEPROVISION
 CODESIGN_KEY=$CODESIGN_IDENTITIES
 ENTITLEMENTS_FILE=$ENTITLEMENTS
+
 echo -e "$2"
+
 if [[ $2 == 'true' ]]; then
   echo "resign with development type"
     PROVISION_FILE=$NEW_MOBILEPROVISION_DEV
     CODESIGN_KEY=$CODESIGN_IDENTITIES_DEV
     ENTITLEMENTS_FILE=$ENTITLEMENTS_DEV
+fi
+
+if [[ $2 == 'free' ]]; then
+  echo "resign with free developer type"
+    PROVISION_FILE=$NEW_MOBILEPROVISION_FREE
+    CODESIGN_KEY=$CODESIGN_IDENTITIES_FREE
+    ENTITLEMENTS_FILE=$ENTITLEMENTS_FREE
 fi
 
 OLD_MOBILEPROVISION="embedded.mobileprovision"
@@ -67,7 +77,7 @@ APP_DIR="Payload/fuck.app"
 
 FUCK_APP_DIR=$(find ${PAYLOAD_DIR} -type d | grep ".app$" | head -n 1)
 
-# incase of some app name with space
+# incase of some app name with white space
 # eg. "hello world.app"
 mv -i "$FUCK_APP_DIR" "$APP_DIR"
 
@@ -104,7 +114,19 @@ if [ -d "$APP_DIR/_CodeSignature" ]; then
             /usr/bin/codesign -f -s "$CODESIGN_KEY" "$PLUGIN"
         done
     fi
-    #codesign with entitlements file
+    
+    #codesign the fuck dylib
+    for FDYLIB in "$APP_DIR/"*; do
+            #statements
+            DYLIB=${FDYLIB##*.}
+            if [[ $DYLIB == dylib ]]; then
+                    #statements
+                    echo "codesign ${FDYLIB}"
+                    /usr/bin/codesign -f -s "$CODESIGN_KEY" "$FDYLIB"
+            fi
+    done
+    
+    echo "codesign with entitlements file"
     /usr/bin/codesign -f -s "$CODESIGN_KEY" --entitlements $ENTITLEMENTS_FILE  $APP_DIR
     if [ -d $APP_DIR/_CodeSignature ]; then
         echo ""

@@ -19,19 +19,26 @@
 
  **P.S.:请看完全文后再配置，后面附有文件的详细获取/修改步骤** Development和Distribution的区别在于Development的重签名是可以`get-task-allow`
 
- ## 3.1 Development配置
+## 3.1.1 Development配置
 
  -	配置`Development`的企业证书在本地的电脑中(钥匙串中)
  -	将您下载的`Development`版的`xx.mobileprovision`放入`resign`目录中并重命名为`EnterPrise_Development.mobileprovision`,文件结构如下图`文件结构`所示
  -	修改`resign`中`Entitlements/developer/Entitlements.plist`的配置
  -	在`resign.config`文件中修改`CODESIGN_IDENTITIES_DEV`的值为您`Development`版的企业证书名字
 
-## 3.1 Distribution配置
+## 3.1.2 Distribution配置
 
 -	配置`Distribution`的企业证书在本地的电脑中(钥匙串中)
 -	将您下载的`Distribution`版的`yy.mobileprovision`放入`resign`目录中并重命名为`EnterPrise_Distribution.mobileprovision`,文件结构如下图`文件结构`所示
 -	修改`resign`中`Entitlements/production/Entitlements.plist`的配置
 -	在`resign.config`文件中修改`CODESIGN_IDENTITIES`的值为您`Distribution`版的企业证书名字
+
+## 3.1.3 free配置
+
+-    配置`free`的企业证书在本地的电脑中(钥匙串中)
+-    将您下载的`free`版的`yy.mobileprovision`放入`resign`目录中并重命名为`Free.mobileprovision`,文件结构如下图`文件结构`所示
+-    修改`resign`中`Entitlements/free/Entitlements.plist`的配置
+-    在`resign.config`文件中修改`CODESIGN_IDENTITIES_FREE`的值为您`Free`版的证书名字
 
 ## 3.2 如何修改对应的`Entitlements.plist`
 
@@ -49,12 +56,19 @@
 	-	将`Entitlements/production/Entitlements.plist`中的`application-identifier`的值，改为`EnterPrise_Distribution.mobileprovision`文件中`application-identifier`中对应的值
 	-	将`Entitlements/production/Entitlements.plist`中的`keychain-access-groups`的值，改为`EnterPrise_Distribution.mobileprovision`文件中`keychain-access-groups`中对应的值
 
+- Free配置
+  - 将`Entitlements/free/Entitlements.plist`中的`application-identifier`的值，改为`Free.mobileprovision`文件中`application-identifier`中对应的值
+  - 将`Entitlements/free/Entitlements.plist`中的`keychain-access-groups`的值，改为`Free.mobileprovision`文件中`keychain-access-groups`中对应的值
+
 ## 3.3 如何获取对应的`xx.mobileprovision`
 
 -	Development
 	-	登陆你的企业开发者账号，选择`Provisioning Profiles`下的`Development`下载`Type`为`iOS Development`的`Provisioning Profiles`文件(P.S.:没试过`Type`为`iOS UniversalDistribution`的)
 -	Distribution
 	-	登陆你的企业开发者账号，选择`Provisioning Profiles`下的`Distribution`下载`Type`为`iOS Distribution`的`Provisioning Profiles`文件(P.S.:没试过`Type`为`iOS UniversalDistribution`的)
+- Free
+  - 在Xcode中登录你的Apple ID，然后利用Xcode下载
+  - PS:目前处于实验阶段，等有空了再来补充完善free版本的签名文档
 
 ## 3.4 如何获取您证书的名字
 -	Development
@@ -65,6 +79,10 @@
 	-	打开电脑中的`Keychain Access`
 	-	找到您的`Distribution`企业证书，并双击
 	-	复制证书`Common Name`中对应的值到`resign.config`的`CODESIGN_IDENTITIES`
+- Free
+  - 打开电脑中的`Keychain Access`
+  - 找到您的`Free`证书，并双击
+  - 复制证书`Common Name`中对应的值到`resign.config`的`CODESIGN_IDENTITIES_FREE`
 
 ## 3.5 如何使用自动安装重签名后的ipa到手机
 - 先使用数据连接线将手机和Mac连接
@@ -79,19 +97,23 @@
 
 
 ```
-aUtoReSiGn
-│   ├── README.md
-│   ├── aUtoReSiGn.sh
-│   └── resign
-│       ├── EnterPrise_Development.mobileprovision
-│       ├── EnterPrise_Distribution.mobileprovision
-│       ├── Entitlements
-│       │   ├── developer
-│       │   └── production
-│       ├── certificate.png
-│       ├── provisioning\ profiles.png
-│       ├── resign.config
-│       └── resign.sh
+autoResign
+├── README.md
+├── aUtoReSiGn.sh
+├── input
+├── output
+└── resign
+    ├── EnterPrise_Development.mobileprovision
+    ├── EnterPrise_Distribution.mobileprovision
+    ├── Entitlements
+    │   ├── developer
+    │   ├── free
+    │   └── production
+    ├── Free.mobileprovision
+    ├── certificate.png
+    ├── provisioning\ profiles.png
+    ├── resign.config
+    └── resign.sh
 ```
 
 ### 在使用过程中如果有任何问题或者改良的方案欢迎提issue和pr.
