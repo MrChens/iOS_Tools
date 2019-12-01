@@ -70,6 +70,23 @@
 
 http://www.saurik.com/id/1
 
+
+# 越狱可用的网站
+1. https://checkra.in
+2. https://frida.re/docs/installation/
+3. 
+# 忘记ssh的密码
+1. 使用iFiles或者Filza打开'/private/etc/master.password',找到下面这行
+
+        root:xxxxxxxxxxxxx:0:0::0:0:System Administrator:/var/root:/bin/sh
+        mobile:xxxxxxxxxxxxx:501:501::0:0:Mobile User:/var/mobile:/bin/sh
+
+2. 将root:及mobile:后面的13个x字符处修改成
+
+        root:/smx7MYTQIi2M:0:0::0:0:System Administrator:/var/root:/bin/sh
+        mobile:/smx7MYTQIi2M:501:501::0:0:Mobile User:/var/mobile:/bin/sh
+3. 修改后保存此文件，你越狱机的ssh密码就重新回到默认的：'alpine'
+
 # cydia can't access network
 1. cd  /var/preferences
 2. backup
