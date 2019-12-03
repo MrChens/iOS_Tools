@@ -11,9 +11,9 @@ if [ $# -lt 1 ]; then
     exit 0
 fi
 
+echo "read cofig from resign.config"
 source resign.config
 
-echo "read config.plist"
 
 TARGET_IPA_PACKAGE_NAME=$1                                                         
 TM_IPA_PACKAGE_NAME="${TARGET_IPA_PACKAGE_NAME%.*}_MC.ipa"                         # resigned ipa name
@@ -23,7 +23,6 @@ PROVISION_FILE=$NEW_MOBILEPROVISION
 CODESIGN_KEY=$CODESIGN_IDENTITIES
 ENTITLEMENTS_FILE=$ENTITLEMENTS
 
-echo -e "$2"
 
 if [[ $2 == 'true' ]]; then
   echo "resign with development type"
@@ -38,6 +37,12 @@ if [[ $2 == 'free' ]]; then
     CODESIGN_KEY=$CODESIGN_IDENTITIES_FREE
     ENTITLEMENTS_FILE=$ENTITLEMENTS_FREE
 fi
+
+echo -e ""
+echo -e "the new ipa named:${TM_IPA_PACKAGE_NAME}"
+echo -e "use provision file:${PROVISION_FILE}"
+echo -e "use entitlements file:${ENTITLEMENTS_FILE}"
+echo -e "use codesign:${CODESIGN_KEY}"
 
 OLD_MOBILEPROVISION="embedded.mobileprovision"
 DEVELOPER=`xcode-select -print-path`
@@ -62,6 +67,7 @@ if [ -e $TM_IPA_PACKAGE_NAME ]; then
 fi
 
 if [ -d $PAYLOAD_DIR ]; then
+    echo "delete old ipa:$PAYLOAD_DIR"
     rm -rf $PAYLOAD_DIR
 fi
 
@@ -79,21 +85,29 @@ FUCK_APP_DIR=$(find ${PAYLOAD_DIR} -type d | grep ".app$" | head -n 1)
 
 # incase of some app name with white space
 # eg. "hello world.app"
+echo "rename ${FUCK_APP_DIR} to ${APP_DIR}"
 mv -i "$FUCK_APP_DIR" "$APP_DIR"
+
+echo "set Minimum support os version:${MINIMUMOSVERSION}"
+plutil -replace MinimumOSVersion -string $MINIMUMOSVERSION $APP_DIR/Info.plist
+# plutil -insert UISupportedDevices.4 -string "iPhone11,6" $APP_DIR/Info.plist 
+# we don't need the this feature
+echo "delete UISupportedDevices keypath in Info.plist"
+plutil -remove UISupportedDevices $APP_DIR/Info.plist
 
 if [ -d "$APP_DIR/_CodeSignature" ]; then
     echo ""
-    echo "2. rm $APP_DIR/_CodeSignature"
+    echo "rm $APP_DIR/_CodeSignature"
     rm -rf $APP_DIR/_CodeSignature
 
     echo ""
-    echo "4. cp $SDK_DIR/ResourceRules.plist $APP_DIR/"
+    echo "cp $SDK_DIR/ResourceRules.plist $APP_DIR/"
     cp $SDK_DIR/ResourceRules.plist $APP_DIR/
     echo ""
-    echo "5. cp $PROVISION_FILE $APP_DIR/$OLD_MOBILEPROVISION"
+    echo "cp $PROVISION_FILE $APP_DIR/$OLD_MOBILEPROVISION"
     cp $PROVISION_FILE $APP_DIR/$OLD_MOBILEPROVISION
     echo ""
-    echo "6. codesign....."
+    echo "*************start codesign*************"
 
     #codesign frameworks
     TARGET_APP_FRAMEWORKS_PATH="$APP_DIR/Frameworks"
@@ -103,17 +117,17 @@ if [ -d "$APP_DIR/_CodeSignature" ]; then
             /usr/bin/codesign -f -s "$CODESIGN_KEY" "$FRAMEWORK"
         done
     fi
+    echo "codesign frameworks done."
 
     #codesign plugins
     TARGET_APP_PLUGINS_PATH="$APP_DIR/PlugIns"
     if [[ -d "$TARGET_APP_PLUGINS_PATH" ]]; then
         for PLUGIN in "$TARGET_APP_PLUGINS_PATH/"*; do
-            echo "PLUGIN($PLUGIN)"
             FILENAME=$(basename $PLUGIN)
-            echo "FILENAME($FILENAME)"
             /usr/bin/codesign -f -s "$CODESIGN_KEY" "$PLUGIN"
         done
     fi
+    echo "codesign plugins done."
     
     #codesign the fuck dylib
     for FDYLIB in "$APP_DIR/"*; do
@@ -125,17 +139,22 @@ if [ -d "$APP_DIR/_CodeSignature" ]; then
                     /usr/bin/codesign -f -s "$CODESIGN_KEY" "$FDYLIB"
             fi
     done
-    
-    echo "codesign with entitlements file"
+    echo "codesign dylibs done."
+
+    echo "codesign ${APP_DIR} with entitlements file"
     /usr/bin/codesign -f -s "$CODESIGN_KEY" --entitlements $ENTITLEMENTS_FILE  $APP_DIR
+
+    echo "*************end codesign*************"
+
     if [ -d $APP_DIR/_CodeSignature ]; then
         echo ""
-        echo "7. zip -r $TARGET_IPA_PACKAGE_NAME $APP_DIR/"
+        echo "zip -r $TARGET_IPA_PACKAGE_NAME $APP_DIR/"
         zip -r $TM_IPA_PACKAGE_NAME $APP_DIR/ > /dev/null
+        echo "delete ${APP_DIR}"
         rm -rf $APP_DIR
         echo " @@@@@@@ resign success !!!  @@@@@@@ "
         exit 0
     fi
 fi
 
-echo "resign fail !!"
+echo "oops! resign fail !!!"
