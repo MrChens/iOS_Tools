@@ -67,9 +67,11 @@
 - http://apt.saurik.com/
 - http://apt.thebigboss.org/repofiles/cydia/
 - https://cydia.angelxwind.net/
-
-http://www.saurik.com/id/1
-
+- http://rpetri.ch/repo/
+    - applist
+- http://www.saurik.com/id/1
+- http://xsf1re.github.io
+    -flyjb
 
 # 越狱可用的网站
 1. https://checkra.in
