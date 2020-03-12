@@ -119,8 +119,47 @@ http://www.saurik.com/id/1
 - dpkg-scanpackages -m debs >Packages
 - bzip2 -zkf Packages
 
+# homebrew
+## 中科大镜像
+替换brew.git:
+cd "$(brew --repo)"
+git remote set-url origin https://mirrors.ustc.edu.cn/brew.git
 
+替换homebrew-core.git:
+cd "$(brew --repo)/Library/Taps/homebrew/homebrew-core"
+git remote set-url origin https://mirrors.ustc.edu.cn/homebrew-core.git
 
+## 阿里镜像
 
+- cd "$(brew --repo)"
+
+- git remote set-url origin https://mirrors.aliyun.com/homebrew/brew.git
+
+- cd "$(brew --repo)/Library/Taps/homebrew/homebrew-core"
+
+- git remote set-url origin https://mirrors.aliyun.com/homebrew/homebrew-core.git
+
+## 更新
+
+- brew update
+- brew config
+
+## 重置
+- cd "$(brew --repo)"
+- git remote set-url origin https://github.com/Homebrew/brew.git
+
+- cd "$(brew --repo)/Library/Taps/homebrew/homebrew-core"
+- git remote set-url origin https://github.com/Homebrew/homebrew-core.git
+
+## 更换 homebrew-bottles
+- echo $SHELL
+
+- echo 'export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.aliyun.com/homebrew/homebrew-bottles' >> ~/.zshrc
+
+- source ~/.zshrc
+
+- echo 'export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.aliyun.com/homebrew/homebrew-bottles' >> ~/.bash_profile
+
+- source ~/.bash_profile
 
 <!-- end -->
