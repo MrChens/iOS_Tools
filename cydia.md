@@ -36,16 +36,16 @@
 
 
 # 常用命令行
-- python tcprelay.py -t 2222:2244
-- uicache //refresh ui
-- ssh root@ip -p 2222
-- scp -P<port> root@<remoteIpAddress>:<remote dir path> <source file path>
-- tcpdump -i lo0 -s0 -w xxxx.pcapng //抓lo0接口的包
-- ifconfig lo0
-- rvictl -s uuid [Getting a Packet Trace]:https://developer.apple.com/library/content/qa/qa1176/_index.html#//apple_ref/doc/uid/DTS10001707-CH1-SECRVI
-- defaults write ~/Desktop/config_Xcode/plistfiletst key value
-- sudo xcode-select -s /Applications/Xcode.app/Contents/Developer
-- curl - I  "http://ssxxx/hhh.txt"
+- `python tcprelay.py -t 2222:2244`
+- `uicache //refresh ui`
+- `ssh root@ip -p 2222`
+- `scp -P<port> root@<remoteIpAddress>:<remote dir path> <source file path>`
+- `tcpdump -i lo0 -s0 -w xxxx.pcapng //抓lo0接口的包`
+- `ifconfig lo0`
+- `rvictl -s uuid [Getting a Packet Trace]:https://developer.apple.com/library/content/qa/qa1176/_index.html#//apple_ref/doc/uid/DTS10001707-CH1-SECRVI`
+- `defaults write ~/Desktop/config_Xcode/plistfiletst key value`
+- `sudo xcode-select -s /Applications/Xcode.app/Contents/Developer`
+- `curl - I  "http://ssxxx/hhh.txt"`
 - wget -c "http://sssxxx/hhh.txt"
 - nscurl --ats-diagnostics --verbose https://127.0.0.1:443 //诊断app对于https的plist设置是否正确
 - dig cache.default.server.matocloud.com
@@ -76,7 +76,7 @@
 # 越狱可用的网站
 1. https://checkra.in
 2. https://frida.re/docs/installation/
-3. 
+3.
 # 忘记ssh的密码
 1. 使用iFiles或者Filza打开'/private/etc/master.password',找到下面这行
 
