@@ -46,19 +46,19 @@
 - `defaults write ~/Desktop/config_Xcode/plistfiletst key value`
 - `sudo xcode-select -s /Applications/Xcode.app/Contents/Developer`
 - `curl - I  "http://ssxxx/hhh.txt"`
-- wget -c "http://sssxxx/hhh.txt"
-- nscurl --ats-diagnostics --verbose https://127.0.0.1:443 //诊断app对于https的plist设置是否正确
-- dig cache.default.server.matocloud.com
-- telnet 123.103.23.219
-- nm //display name list (symbol table)
-- dpkg -i xxxx.deb (use apt-get install -f command tries to fix this broken package by installing the missing dependency)
-    - https://unix.stackexchange.com/questions/159094/how-to-install-a-deb-file-by-dpkg-i-or-by-apt
-- grep -rnw headOutPuts -e 'requestByRemovingPostCheckKey' //查找指定字符串的文件
-- otool -l xxxx | grep crypt    // 0为脱过壳
-- codesign -d --ent :- /path/to/the.app //Inspect the entitlements of a built app
+- `wget -c "http://sssxxx/hhh.txt"`
+- `nscurl --ats-diagnostics --verbose https://127.0.0.1:443 //诊断app对于https的plist设置是否正确`
+- `dig cache.default.server.matocloud.com`
+- `telnet 123.103.23.219`
+- `nm //display name list (symbol table)`
+- `dpkg -i xxxx.deb (use apt-get install -f command tries to fix this broken package by installing the missing dependency)`
+    - `https://unix.stackexchange.com/questions/159094/how-to-install-a-deb-file-by-dpkg-i-or-by-apt`
+- `grep -rnw headOutPuts -e 'requestByRemovingPostCheckKey' //查找指定字符串的文件`
+- `otool -l xxxx | grep crypt    // 0为脱过壳`
+- `codesign -d --ent :- /path/to/the.app //Inspect the entitlements of a built app`
 # 常用文件路径
-- host文件 /private/etc/
-- cydia下载的deb文件 /private/var/cache/apt/archives 2014年11月，iOS8越狱后的deb包的变化: /User/Library/Caches/com.saurik.Cydia/archives/
+- `host文件 /private/etc/`
+- `cydia下载的deb文件 /private/var/cache/apt/archives 2014年11月，iOS8越狱后的deb包的变化: /User/Library/Caches/com.saurik.Cydia/archives/`
 
 # 自动安装deb文件
 - 将deb文件放入/private/var/root/Media/Cydia/AutoInstall,然后重启设备
@@ -96,6 +96,14 @@
 4. rm -rf com.apple.networkextension.cache.plist
 5. rm -rf com.apple.networkextension.necp.plist
 6. 提醒: 如果你是第一次使用的同学cydia启用网络之后 会搜索到cydia的更新 更新之后 的cydia又会无法联网.请再去删一次 3个文件然后再重启 即可.
+
+# Reveal V4 fix "The operation couldn’t be completed. The app is linked against an older version of the Reveal library. You may need to update the Reveal library in your app."
+0. `install Reveal2Loader_1.0-3_iphoneos-arm.deb or put deb in Device/var/root`
+1. `copy RevealServer.framework to /Library/Frameworks`
+2. `killall SpringBoard`
+
+# ifunbox can see root
+1. install "Apple File Conduit "2" (64位)"
 
 # IPA2Deb
 - mkdir tmp
