@@ -7,6 +7,7 @@
 - top:动态查看系统状态，如CPU负载
 - inetutils: ping, ftp客户端/服务端
 - cURL:
+- ReRpovision:app自动续签
 - tcpdump: 抓包工具
 - network Commands: 网络管理工具, ifconfig, netstat, arp, route, traceroute
 - readline: 方便命令行移动
@@ -73,6 +74,8 @@
 - http://xsf1re.github.io
     -flyjb
 
+# iPhone相关的网站
+ - https://www.theiphonewiki.com/wiki/Models
 # 越狱可用的网站
 1. https://checkra.in
 2. https://frida.re/docs/installation/
