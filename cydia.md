@@ -108,6 +108,11 @@
 # ifunbox can see root
 1. install "Apple File Conduit "2" (64位)"
 
+# 方便的调试他人app的工具
+- flexible
+- woodpecker
+- lookin
+
 # IPA2Deb
 - mkdir tmp
 - cd tmp
